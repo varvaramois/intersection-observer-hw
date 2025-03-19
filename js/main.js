@@ -20,9 +20,9 @@ function changeImages(elements) {
   elements.forEach((element) => {
     const img = element.target.querySelector("img");
     if (element.isIntersecting) {
-      img.src = img.getAttribute("data-alt-src");
+      img.src = img.dataset.altSrc;
     } else {
-      img.src = img.getAttribute("src");
+      img.src = img.getAttribute("src").replace("color-artist", "artist");
     }
   });
 }
@@ -33,3 +33,4 @@ const observer = new IntersectionObserver(changeImages, {
 
 const li = document.querySelectorAll(".list__item");
 li.forEach((item) => observer.observe(item));
+
